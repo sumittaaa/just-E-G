@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="next.css">
+</head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+</style>
+<body>
+    <div class="ctnbox">
+        <h1>You + Me</h1>
+    </div>
+    <div class="our">
+        <video width="300" height="360" autoplay muted loop>
+            <source src="./img/our.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="ctnboxdays">
+        <div id="timer">กำลังโหลด...</div>
+        <h1>I’d choose you over dessert</h1>
+    </div>
+        <!-- Script -->
+  <script>
+    // กำหนดวันที่เริ่มนับ (12 กุมภาพันธ์ 2568 -> 2025-02-12)
+    const startDate = new Date("2025-02-12T00:00:00");
+
+    function updateTime() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+     document.getElementById("timer").innerHTML =
+        `${days} วัน<br>${hours} ชม. ${minutes} นาที ${seconds} วินาที`;
+    }
+
+    // อัปเดตทุกวินาที
+    setInterval(updateTime, 1000);
+    updateTime(); // เรียกตอนโหลดหน้า
+  </script>
+</body>
+</html>
